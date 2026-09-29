@@ -1,0 +1,46 @@
+[
+  {
+    "first_name": "Avery",
+    "last_name": "UrgentSynthetic",
+    "email": "avery.urgent.synthetic@example.com",
+    "phone": "9015550101",
+    "vehicle_interest": "2025 Honda CR-V",
+    "budget": 35000,
+    "financing_interest": true,
+    "trade_in_interest": true,
+    "preferred_contact_method": "email",
+    "notes": "Synthetic scenario: wants an SUV this week and has a 2019 sedan to trade."
+  },
+  {
+    "first_name": "Blake",
+    "last_name": "BudgetSynthetic",
+    "email": "blake.budget.synthetic@example.com",
+    "vehicle_interest": "Compact used SUV",
+    "budget": 22000,
+    "preferred_contact_method": "phone",
+    "notes": "Synthetic scenario: comparing options under a firm budget."
+  },
+  {
+    "first_name": "Casey",
+    "last_name": "UncertainSynthetic",
+    "email": "casey.uncertain.synthetic@example.com",
+    "financing_interest": false,
+    "trade_in_interest": false,
+    "preferred_contact_method": "email",
+    "notes": "Synthetic scenario: unsure whether a sedan or crossover is a better fit."
+  },
+  {
+    "first_name": "Devon",
+    "last_name": "MinimalSynthetic",
+    "email": "devon.minimal.synthetic@example.com",
+    "preferred_contact_method": "email"
+  },
+  {
+    "first_name": "Avery",
+    "last_name": "UrgentSynthetic",
+    "email": "avery.urgent.synthetic@example.com",
+    "vehicle_interest": "2025 Honda CR-V",
+    "notes": "Synthetic repeat inquiry used to demonstrate duplicate prevention."
+  }
+]
+

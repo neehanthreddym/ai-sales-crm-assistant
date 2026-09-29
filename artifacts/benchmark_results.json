@@ -1,0 +1,17 @@
+{
+  "mode": "offline_mocked_integrations",
+  "disclaimer": "Measures local orchestration with deterministic mocked external services; not external API performance.",
+  "requests": 25,
+  "successful_workflows": 25,
+  "workflow_completion_rate": 1.0,
+  "median_end_to_end_latency_ms": 1.666,
+  "p95_end_to_end_latency_ms": 2.09,
+  "hubspot_api_failure_count": 0,
+  "median_mock_llm_latency_ms": 0.025,
+  "sheets_sync_success_rate": 1.0,
+  "duplicate_requests": 6,
+  "duplicate_prevention_success_rate": 1.0,
+  "unique_contacts_created": 19,
+  "unique_sheet_rows": 19,
+  "measured_at": "2026-09-29T19:34:57.548358+00:00"
+}
