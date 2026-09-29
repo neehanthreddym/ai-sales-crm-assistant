@@ -34,6 +34,39 @@ flowchart LR
 
 Routes contain only HTTP concerns. `LeadService` owns orchestration, `CRMWorkflow` owns CRM sequencing, and separate adapters own Groq/OpenAI, HubSpot and Sheets transport. HubSpot and Sheets clients implement bounded exponential retries for timeouts, `429`, and transient `5xx` responses. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
+## Project walkthrough
+
+All screenshots show synthetic records created in development/test accounts. No real
+customer information is used.
+
+### REST API
+
+FastAPI exposes the health check and lead-processing, retrieval and deal-stage endpoints
+through generated OpenAPI documentation.
+
+![FastAPI OpenAPI documentation showing the health and lead endpoints](assets/fastapi_docs.png)
+
+The primary endpoint accepts a validated synthetic dealership lead and runs the complete
+AI, CRM and reporting workflow.
+
+![FastAPI process-lead endpoint with a synthetic request payload](assets/fastapi_process_request.png)
+
+### HubSpot CRM
+
+The workflow upserts contacts by normalized email and reuses a matching active deal rather
+than creating duplicates on repeat submissions.
+
+| Synthetic contacts | Deal pipeline |
+|---|---|
+| ![Synthetic contacts created in the HubSpot sandbox](assets/hubspot_contacts.png) | ![Synthetic automotive deals in the HubSpot sandbox pipeline](assets/hubspot_deals.png) |
+
+### Google Sheets reporting
+
+Each workflow upserts a traceable reporting row containing the workflow ID, CRM identifiers,
+deal stage, normalized urgency, recommended action and synchronization status.
+
+![Google Sheets pipeline report populated with synthetic workflow records](assets/google_sheets_leads.png)
+
 ## Features
 
 - Strict Pydantic validation for names, email, phone, budget, contact method, optional fields, and unknown input.
