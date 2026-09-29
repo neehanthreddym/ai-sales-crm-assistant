@@ -1,8 +1,18 @@
 # AI Sales CRM Assistant
 
+<p align="left">
+  <img alt="Python 3.12+" src="https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white">
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.115%2B-009688?logo=fastapi&logoColor=white">
+  <img alt="Pydantic 2" src="https://img.shields.io/badge/Pydantic-2-E92063?logo=pydantic&logoColor=white">
+  <img alt="HubSpot CRM" src="https://img.shields.io/badge/HubSpot-CRM-FF7A59?logo=hubspot&logoColor=white">
+  <img alt="Groq" src="https://img.shields.io/badge/Groq-Structured_AI-F55036">
+  <img alt="Google Sheets API" src="https://img.shields.io/badge/Google_Sheets-API_v4-34A853?logo=googlesheets&logoColor=white">
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white">
+</p>
+
 A production-oriented portfolio proof of concept for an automotive dealership lead workflow. A single FastAPI request validates a synthetic lead, obtains schema-validated AI analysis, upserts HubSpot contact and deal records, preserves the AI output as a CRM note, and upserts a Google Sheets reporting row. Follow-ups are drafts only and always require human review.
 
-No production users, business outcomes, ROI, conversion lift, or time savings are claimed. HubSpot operations, Groq structured generation, Google Sheets synchronization and the complete cross-service workflow passed credential-gated development validation. OpenAI remains an optional, unverified provider switch.
+HubSpot operations, Groq structured generation, Google Sheets synchronization and the complete cross-service workflow passed credential-gated development validation. OpenAI remains an optional, unverified provider switch.
 
 ## Architecture
 
@@ -39,9 +49,26 @@ Routes contain only HTTP concerns. `LeadService` owns orchestration, `CRMWorkflo
 - Mocked unit/API/end-to-end tests plus opt-in real integration validation.
 - Offline benchmark and a live HTTP benchmark mode with separate, explicit evidence boundaries.
 
-## Technology
+## Technology stack
 
-Python 3.12+, FastAPI, Pydantic 2, httpx, OpenAI-compatible SDK transport, Groq/OpenAI APIs, Google Auth, HubSpot REST APIs, Google Sheets API v4, structlog, pytest, pytest-asyncio, Uvicorn and Docker.
+| Layer | Technology | Purpose |
+|---|---|---|
+| Language | **Python 3.12+** | Typed asynchronous application and integration logic |
+| API | **FastAPI**, **Uvicorn** | REST endpoints, dependency injection, OpenAPI documentation and ASGI serving |
+| Validation | **Pydantic 2**, **pydantic-settings**, **email-validator** | Request validation, structured AI outputs and environment-backed configuration |
+| AI | **Groq API**, **OpenAI Python SDK** | Live-verified Groq structured generation with a provider boundary for optional OpenAI switching |
+| CRM | **HubSpot CRM REST API `2026-09`** | Contact/deal upserts, pipeline validation, associations and activity-note logging |
+| Reporting | **Google Sheets API v4**, **Google Auth** | Service-account authentication and duplicate-safe pipeline-row synchronization |
+| HTTP | **httpx** | Async external API transport, timeouts and mockable request handling |
+| Observability | **structlog** | Structured workflow, operation, status and latency logging |
+| Testing | **pytest**, **pytest-asyncio**, **HTTPX MockTransport** | Unit, API, retry, idempotency and opt-in live-integration validation |
+| Quality | **Ruff**, **Coverage.py** | Linting, import checks and test-coverage support |
+| Tooling | **python-dotenv**, **setuptools**, **Make**, **Docker** | Local configuration, packaging, repeatable commands and container execution |
+
+The stack intentionally keeps the application small: FastAPI owns the HTTP boundary,
+Pydantic enforces contracts, `httpx` adapters isolate external services, and the LLM
+provider abstraction allows Groq and OpenAI to be switched without changing CRM workflow
+logic.
 
 ## Quick start
 
@@ -156,7 +183,7 @@ Contacts are searched by email and updated when present. The service retrieves t
 - Sheets upsert is read-then-write and is not transactional under concurrent writers.
 - LLM output assists organization only; it cannot approve financing or make regulated decisions.
 - Follow-up text is never sent by this application.
-- Real external verification is not claimed until the scripts pass with test-account credentials.
+- External verification is limited to synthetic development/test accounts and the measured results documented in [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md); it is not evidence of production reliability.
 
 ## Further documentation
 
