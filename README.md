@@ -209,7 +209,7 @@ Contacts are searched by email and updated when present. The service retrieves t
 ## Security and limitations
 
 - The API itself has no caller authentication; deploy only behind an authenticated gateway.
-- This is a portfolio POC, not a production dealership system or system of record.
+- This is a POC, not a production dealership system or system of record.
 - Customer text goes to the selected Groq or OpenAI account; a real deployment needs consent, retention and data-processing review.
 - Logs omit full lead payloads and credentials, but CRM and Sheets hold PII and require access controls and retention policy.
 - Local service-account credentials are supported for demonstration; workload identity is preferable in hosted environments.
@@ -224,6 +224,6 @@ Contacts are searched by email and updated when present. The service retrieves t
 - [HubSpot setup](docs/HUBSPOT_SETUP.md)
 - [Google Sheets setup](docs/GOOGLE_SHEETS_SETUP.md)
 - [Architecture](docs/ARCHITECTURE.md)
-- [Interview demo](docs/DEMO.md)
+- [Demo](docs/DEMO.md)
 - [Verified test evidence](docs/TEST_RESULTS.md)
 - [Resume evidence](docs/RESUME_EVIDENCE.md)
