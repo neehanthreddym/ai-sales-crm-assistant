@@ -10,6 +10,8 @@
   <img alt="Docker" src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white">
 </p>
 
+[![How it works](https://www.gitskins.com/api/badge/diagram?repo=neehanthreddym/ai-sales-crm-assistant)](https://www.gitskins.com/neehanthreddym/ai-sales-crm-assistant)
+
 A production-oriented portfolio proof of concept for an automotive dealership lead workflow. A single FastAPI request validates a synthetic lead, obtains schema-validated AI analysis, upserts HubSpot contact and deal records, preserves the AI output as a CRM note, and upserts a Google Sheets reporting row. Follow-ups are drafts only and always require human review.
 
 HubSpot operations, Groq structured generation, Google Sheets synchronization and the complete cross-service workflow passed credential-gated development validation. OpenAI remains an optional, unverified provider switch.
